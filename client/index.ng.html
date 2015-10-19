@@ -1,0 +1,9 @@
+<div ng-controller="PartiesListCtrl">
+    <div ng-include="'client/home/home.ng.html'"></div>
+    <ul>
+        <li ng-repeat="party in parties">
+            {{party.name}}
+            <p>{{party.description}}</p>
+        </li>
+    </ul>
+</div>
