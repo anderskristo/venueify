@@ -1,20 +1,17 @@
 if (Meteor.isClient) {
+    Parties = new Mongo.Collection('parties');
+
     angular.module('venueify', ['angular-meteor'])
 
-    .controller('PartiesListCtrl', function ($scope) {
-        $scope.parties = [
-            {
-                'name': 'Dubstep-Free Zone Anders',
-                'description': 'Can we please just for an evening not listen to dubstep.'
-            },
-            {
-                'name': 'All dubstep all the time',
-                'description': 'Get it on!'
-            },
-            {
-                'name': 'Savage lounging',
-                'description': 'Leisure suit required. And only fiercest manners.'
-            }
-        ];
+    .controller('PartiesListCtrl', function ($scope, $meteor) {
+        $scope.parties = $meteor.collection(Parties);
+
+        $scope.remove = function (party) {
+            $scope.parties.remove(party);
+        };
+
+        $scope.removeAll = function () {
+            $scope.parties.remove();
+        };
     });
 }

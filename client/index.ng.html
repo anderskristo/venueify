@@ -1,9 +1,18 @@
 <div ng-controller="PartiesListCtrl">
     <div ng-include="'client/home/home.ng.html'"></div>
+    <form>
+        <label>Name: </label>
+        <input ng-model="newParty.name">
+        <label>Description: </label>
+        <input ng-model="newParty.description">
+        <button ng-click="parties.save(newParty); newParty='';">Add</button>
+        <button ng-click="removeAll()">Remove All</button>
+    </form>
     <ul>
         <li ng-repeat="party in parties">
             {{party.name}}
             <p>{{party.description}}</p>
+            <button ng-click="remove(party)">Remove</button>
         </li>
     </ul>
 </div>
